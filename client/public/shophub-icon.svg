@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" fill="none">
+
+  <!-- Dark background -->
+  <rect width="64" height="64" fill="#0f0e0d"/>
+
+  <!-- Copper top rule -->
+  <rect x="0" y="0" width="64" height="2.5" fill="#b87333"/>
+
+  <!-- Shopping bag body — sharp trapezoidal -->
+  <path
+    d="M18 27 L15 51 L49 51 L46 27 Z"
+    fill="none"
+    stroke="#f5f2ee"
+    stroke-width="1.8"
+    stroke-linejoin="miter"
+  />
+
+  <!-- Bag handle arc — copper -->
+  <path
+    d="M25 27 C25 18.5 39 18.5 39 27"
+    fill="none"
+    stroke="#b87333"
+    stroke-width="2.2"
+    stroke-linecap="square"
+  />
+
+  <!-- Subtle horizontal shelf inside bag -->
+  <line x1="18.8" y1="36" x2="45.2" y2="36" stroke="#f5f2ee" stroke-width="0.7" opacity="0.25"/>
+
+  <!-- Copper diamond / price tag accent -->
+  <rect x="29.2" y="39.2" width="5.6" height="5.6" fill="#b87333" transform="rotate(45 32 42)"/>
+
+  <!-- Bottom copper rule (faint) -->
+  <rect x="0" y="61.5" width="64" height="2.5" fill="#b87333" opacity="0.35"/>
+
+</svg>

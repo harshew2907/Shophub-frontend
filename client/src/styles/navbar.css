@@ -1,0 +1,295 @@
+/* ============================================
+   NAVBAR COMPONENT — Luxury Editorial
+   Matches: Full ShopHub design system
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* ── CSS Variables ── */
+:root {
+  --ink:          #0f0e0d;
+  --canvas:       #f5f2ee;
+  --warm-white:   #faf8f5;
+  --copper:       #b87333;
+  --copper-light: #d4956a;
+  --muted:        #7a7169;
+  --border:       rgba(15, 14, 13, 0.12);
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'DM Sans', sans-serif;
+  --transition:   0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ════════════════════════════════════════════
+   NAVBAR SHELL
+   ════════════════════════════════════════════ */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--canvas);
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-body);
+}
+
+/* Copper accent line at very top */
+.navbar::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--copper), var(--copper-light), var(--copper));
+}
+
+/* ════════════════════════════════════════════
+   INNER CONTAINER
+   ════════════════════════════════════════════ */
+.navbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8%;
+  height: 68px;
+  gap: 2rem;
+}
+
+/* ════════════════════════════════════════════
+   LOGO
+   ════════════════════════════════════════════ */
+.logo a {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  text-decoration: none;
+  text-transform: uppercase;
+  position: relative;
+  transition: color var(--transition);
+}
+
+/* Copper dot after logo */
+.logo a::after {
+  content: '·';
+  color: var(--copper);
+  margin-left: 0.1rem;
+  font-size: 2rem;
+  line-height: 0;
+  vertical-align: -0.1em;
+}
+
+.logo a:hover {
+  color: var(--copper);
+}
+
+/* ════════════════════════════════════════════
+   NAV LINKS
+   ════════════════════════════════════════════ */
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-links li a {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.5rem 0.9rem;
+  position: relative;
+  transition: color var(--transition);
+}
+
+/* Animated underline */
+.nav-links li a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0.9rem;
+  right: 0.9rem;
+  height: 1px;
+  background: var(--copper);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--transition);
+}
+
+.nav-links li a:hover {
+  color: var(--ink);
+}
+
+.nav-links li a:hover::after {
+  transform: scaleX(1);
+}
+
+/* Active link state — add class="active" via NavLink if used */
+.nav-links li a.active {
+  color: var(--ink);
+}
+
+.nav-links li a.active::after {
+  transform: scaleX(1);
+}
+
+/* ════════════════════════════════════════════
+   CART ICON
+   ════════════════════════════════════════════ */
+.cart-icon a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 0.55rem 1.2rem;
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  transition: color var(--transition), border-color var(--transition);
+}
+
+.cart-icon a::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--ink);
+  transform: translateX(-101%);
+  transition: transform var(--transition);
+  z-index: 0;
+}
+
+.cart-icon a:hover {
+  color: var(--canvas);
+  border-color: var(--ink);
+}
+
+.cart-icon a:hover::before {
+  transform: translateX(0);
+}
+
+/* Keep text above sweep */
+.cart-icon a > * {
+  position: relative;
+  z-index: 1;
+}
+
+.cart-icon a {
+  position: relative;
+  z-index: 1;
+}
+
+/* Cart badge */
+.cart-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  background: var(--copper);
+  color: #fff;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  border-radius: 0;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+}
+
+/* ════════════════════════════════════════════
+   RESPONSIVE — Mobile Hamburger
+   ════════════════════════════════════════════ */
+
+/* Hidden checkbox toggle */
+.nav-toggle {
+  display: none;
+}
+
+/* Hamburger button — hidden by default */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  z-index: 110;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 1.5px;
+  background: var(--ink);
+  transition: transform var(--transition), opacity var(--transition), width var(--transition);
+  transform-origin: center;
+}
+
+@media (max-width: 780px) {
+  .nav-hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    position: fixed;
+    inset: 0;
+    top: 72px;
+    background: var(--canvas);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0;
+    padding: 2rem 8%;
+    border-top: 1px solid var(--border);
+    transform: translateX(100%);
+    transition: transform var(--transition);
+    z-index: 99;
+  }
+
+  .nav-links.open {
+    transform: translateX(0);
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links li a {
+    display: block;
+    padding: 1.1rem 0;
+    font-size: 0.8rem;
+    border-bottom: 1px solid var(--border);
+    letter-spacing: 0.1em;
+  }
+
+  .nav-links li a::after {
+    display: none;
+  }
+
+  .navbar-container {
+    padding: 0 5%;
+  }
+
+  .cart-icon a {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.68rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo a {
+    font-size: 1.4rem;
+  }
+}

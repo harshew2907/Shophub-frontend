@@ -1,0 +1,253 @@
+/* ============================================
+   ABOUT US PAGE — Luxury Editorial
+   Matches: Home.css design system
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* ── CSS Variables (shared design system) ── */
+:root {
+  --ink:          #0f0e0d;
+  --canvas:       #f5f2ee;
+  --warm-white:   #faf8f5;
+  --copper:       #b87333;
+  --copper-light: #d4956a;
+  --muted:        #7a7169;
+  --border:       rgba(15, 14, 13, 0.12);
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'DM Sans', sans-serif;
+  --transition:   0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ── Page Shell ── */
+.about-page {
+  background: var(--canvas);
+  font-family: var(--font-body);
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ════════════════════════════════════════════
+   PAGE HEADER
+   ════════════════════════════════════════════ */
+.about-page > h1 {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  color: var(--ink);
+  margin: 0;
+  padding: 6rem 8% 4rem;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+
+/* Decorative copper rule under heading */
+.about-page > h1::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 8%;
+  width: 80px;
+  height: 2px;
+  background: var(--copper);
+}
+
+/* ════════════════════════════════════════════
+   CONTENT GRID
+   ════════════════════════════════════════════ */
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+/* Each section is a grid cell */
+.about-content section {
+  padding: 4rem 8%;
+  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+  position: relative;
+  transition: background var(--transition);
+}
+
+/* Right column cells remove right border */
+.about-content section:nth-child(even) {
+  border-right: none;
+}
+
+/* Last row removes bottom border */
+.about-content section:nth-last-child(-n+2) {
+  border-bottom: none;
+}
+
+/* Hover fill */
+.about-content section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--warm-white);
+  opacity: 0;
+  transition: opacity var(--transition);
+  pointer-events: none;
+}
+
+.about-content section:hover::before {
+  opacity: 1;
+}
+
+/* Section number watermark */
+.about-content section::after {
+  content: counter(section-counter, decimal-leading-zero);
+  counter-increment: section-counter;
+  position: absolute;
+  top: 2rem;
+  right: 2.5rem;
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--border);
+  line-height: 1;
+  transition: color var(--transition);
+  pointer-events: none;
+}
+
+.about-content {
+  counter-reset: section-counter;
+}
+
+.about-content section:hover::after {
+  color: rgba(184, 115, 51, 0.12);
+}
+
+/* Section headings */
+.about-content section h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 600;
+  letter-spacing: 0.015em;
+  line-height: 1.2;
+  margin: 0 0 1.25rem;
+  color: var(--ink);
+  position: relative;
+  z-index: 1;
+}
+
+/* Copper dot accent before heading */
+.about-content section h2::before {
+  content: '·';
+  color: var(--copper);
+  margin-right: 0.4rem;
+  font-size: 1.5em;
+  line-height: 0;
+  vertical-align: -0.15em;
+}
+
+/* Section paragraphs */
+.about-content section p {
+  font-size: 0.9rem;
+  font-weight: 300;
+  color: var(--muted);
+  line-height: 1.9;
+  letter-spacing: 0.03em;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+  max-width: 480px;
+}
+
+/* ════════════════════════════════════════════
+   WHY CHOOSE US — STYLED LIST
+   ════════════════════════════════════════════ */
+.about-content section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  position: relative;
+  z-index: 1;
+}
+
+.about-content section ul li {
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: 0.04em;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: gap var(--transition), color var(--transition);
+}
+
+.about-content section ul li:last-child {
+  border-bottom: none;
+}
+
+/* Arrow icon via pseudo-element */
+.about-content section ul li::before {
+  content: '→';
+  color: var(--copper);
+  font-size: 0.8rem;
+  flex-shrink: 0;
+  transition: transform var(--transition);
+}
+
+.about-content section ul li:hover {
+  color: var(--copper);
+  gap: 1rem;
+}
+
+.about-content section ul li:hover::before {
+  transform: translateX(4px);
+}
+
+/* ════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════ */
+@media (max-width: 860px) {
+  .about-content {
+    grid-template-columns: 1fr;
+  }
+
+  .about-content section {
+    border-right: none;
+  }
+
+  .about-content section:nth-last-child(-n+2) {
+    border-bottom: 1px solid var(--border);
+  }
+
+  .about-content section:last-child {
+    border-bottom: none;
+  }
+
+  .about-page > h1 {
+    padding: 4rem 6% 3rem;
+  }
+
+  .about-content section {
+    padding: 3rem 6%;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-page > h1 {
+    padding: 3rem 5% 2.5rem;
+  }
+
+  .about-content section {
+    padding: 2.5rem 5%;
+  }
+
+  .about-content section::after {
+    font-size: 3rem;
+    top: 1.5rem;
+    right: 1.5rem;
+  }
+}

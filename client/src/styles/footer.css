@@ -1,0 +1,261 @@
+/* ============================================
+   FOOTER COMPONENT — Luxury Editorial
+   Matches: Full ShopHub design system
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* ── CSS Variables ── */
+:root {
+  --ink:          #0f0e0d;
+  --canvas:       #f5f2ee;
+  --warm-white:   #faf8f5;
+  --copper:       #b87333;
+  --copper-light: #d4956a;
+  --muted:        #7a7169;
+  --border:       rgba(15, 14, 13, 0.12);
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'DM Sans', sans-serif;
+  --transition:   0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ════════════════════════════════════════════
+   FOOTER SHELL
+   ════════════════════════════════════════════ */
+.footer {
+  background: var(--ink);
+  color: var(--canvas);
+  font-family: var(--font-body);
+  border-top: 2px solid var(--copper);
+}
+
+/* ════════════════════════════════════════════
+   MAIN GRID
+   ════════════════════════════════════════════ */
+.footer-container {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 0;
+  padding: 0 8%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ════════════════════════════════════════════
+   FOOTER SECTIONS
+   ════════════════════════════════════════════ */
+.footer-section {
+  padding: 3.5rem 2.5rem 3.5rem 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+}
+
+.footer-section:first-child {
+  padding-left: 0;
+}
+
+.footer-section:last-child {
+  border-right: none;
+  padding-left: 2.5rem;
+  padding-right: 0;
+}
+
+.footer-section:nth-child(2) {
+  padding-left: 2.5rem;
+}
+
+/* Section headings */
+.footer-section h4 {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin: 0 0 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+}
+
+/* Copper tick under heading */
+.footer-section h4::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 24px;
+  height: 1px;
+  background: var(--copper-light);
+}
+
+/* ════════════════════════════════════════════
+   ABOUT TEXT
+   ════════════════════════════════════════════ */
+.footer-section:first-child p {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+  color: rgba(245, 242, 238, 0.65);
+  margin: 0;
+  max-width: 280px;
+}
+
+/* ════════════════════════════════════════════
+   QUICK LINKS LIST
+   ════════════════════════════════════════════ */
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.footer-section ul li a {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: rgba(245, 242, 238, 0.55);
+  text-decoration: none;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: color var(--transition), gap var(--transition);
+}
+
+.footer-section ul li:last-child a {
+  border-bottom: none;
+}
+
+/* Arrow icon */
+.footer-section ul li a::before {
+  content: '→';
+  font-size: 0.7rem;
+  color: var(--copper);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity var(--transition), transform var(--transition);
+}
+
+.footer-section ul li a:hover {
+  color: var(--canvas);
+  gap: 0.85rem;
+}
+
+.footer-section ul li a:hover::before {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ════════════════════════════════════════════
+   CONTACT INFO
+   ════════════════════════════════════════════ */
+.footer-section:last-child p {
+  font-size: 0.82rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: rgba(245, 242, 238, 0.55);
+  line-height: 1.6;
+  margin: 0 0 0.6rem;
+  transition: color var(--transition);
+}
+
+.footer-section:last-child p:last-child {
+  margin-bottom: 0;
+}
+
+.footer-section:last-child p:hover {
+  color: var(--canvas);
+}
+
+/* ════════════════════════════════════════════
+   FOOTER BOTTOM BAR
+   ════════════════════════════════════════════ */
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 8%;
+}
+
+.footer-bottom p {
+  font-size: 0.7rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(245, 242, 238, 0.3);
+  margin: 0;
+}
+
+/* Decorative brand mark on the right */
+.footer-bottom::after {
+  content: 'ShopHub·';
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: rgba(184, 115, 51, 0.35);
+  text-transform: uppercase;
+}
+
+/* ════════════════════════════════════════════
+   RESPONSIVE
+   ════════════════════════════════════════════ */
+@media (max-width: 860px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    padding: 0 6%;
+  }
+
+  .footer-section:first-child {
+    grid-column: 1 / -1;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 3rem 0 2rem;
+  }
+
+  .footer-section:first-child p {
+    max-width: 100%;
+  }
+
+  .footer-section:nth-child(2) {
+    padding-left: 0;
+    border-right: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .footer-section:last-child {
+    padding-left: 2rem;
+  }
+
+  .footer-bottom {
+    padding: 1.25rem 6%;
+  }
+}
+
+@media (max-width: 520px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    padding: 0 5%;
+  }
+
+  .footer-section {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 2.5rem 0 !important;
+  }
+
+  .footer-section:last-child {
+    border-bottom: none;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+    padding: 1.5rem 5%;
+  }
+}
